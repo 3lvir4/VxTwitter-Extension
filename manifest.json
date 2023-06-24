@@ -1,0 +1,23 @@
+{
+    "manifest_version": 2,
+    "name": "vxTwitterAuto",
+    "version": "1.0",
+    "description": "",
+    "icons": {
+        "48": "icons/48.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.twitter.com/*"
+            ],
+            "js": [
+                "index.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "clipboardWrite",
+        "*://*.twitter.com/*"
+    ]
+}
