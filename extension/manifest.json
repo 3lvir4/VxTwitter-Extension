@@ -1,10 +1,14 @@
 {
     "manifest_version": 3,
-    "name": "vxTwitterAuto",
-    "version": "1.0.0",
+    "name": "AutoTwitFix",
+    "version": "1.0.1",
     "description": "Simple extension that converts twitter video urls into vxtwitter urls when you click on \"copy the link\" in the \"share\" context menu. It has a hotkey (ctrl+c) to do it without clicking if you're on a tweet's page already.",
     "icons": {
         "48": "icons/48.png"
+    },
+    "action": {
+        "default_title": "AutoTwitFix",
+        "default_popup": "popup/index.html"
     },
     "content_scripts": [
         {
@@ -12,7 +16,7 @@
                 "*://*.twitter.com/*"
             ],
             "js": [
-                "index.js"
+                "./bundle.js"
             ]
         }
     ],

@@ -1,0 +1,9 @@
+body {
+   font-size: 10px;
+}
+
+.container {
+   inline-size: 25rem;
+   max-block-size: 40rem;
+   overflow: auto;
+}
