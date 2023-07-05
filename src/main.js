@@ -5,8 +5,22 @@
 // *****************************************************************************************************************************************
 
 import { writeToClipboard } from "./utils/clipboard.js";
-import { getVxTweetLink } from "./utils/tovx.js";
+import { getVxTweetLink, removeVxFromTweetLink } from "./utils/linkConverters.js";
+import { insertBefore, insertAfter } from "./utils/insertElement.js";
+
 import { handleKeyDown } from "./modules/autocopy.js"
+
+let extendedOptionsState;
+
+// storage changes handler
+chrome.storage.onChanged.addListener(function (changes) {
+    for (let [key, { newValue }] of Object.entries(changes)) {
+        if (key === 'extendedOptionsState') {
+            extendedOptionsState = newValue;
+        }
+    }
+});
+
 
 
 // infinite loop
@@ -38,18 +52,41 @@ setInterval(function timer() {
 }, 1000)
 
 function createHandleShareClick(link) {
-    function handleClick() {
+    function handleClick(optionChoice) {
         setTimeout(async function hookToClipboard() {
-            writeToClipboard(link) // update clipboard
+            // update clipboard
+            switch (optionChoice) {
+                case 'vx':
+                    writeToClipboard(link);
+                    break;
+                case 'raw':
+                    link = removeVxFromTweetLink(link);
+                    writeToClipboard(link);
+                    break;
+            }
         }, 50)
     }
 
     // handle share context menu upon click
     return function handleShareClick() {
         setTimeout(function hookToMenu() {
-            const menuItem = document.querySelector('#layers div:nth-of-type(1)[role="menuitem"]')
+            const menuItem = document.querySelector('#layers div:nth-of-type(1)[role="menuitem"]');
+            let optionChoice = 'vx';
+
+            if (extendedOptionsState) {
+                // add new item to share context menu
+                const rawOptionMenuItem = menuItem.cloneNode(true);
+                rawOptionMenuItem.lastChild.firstChild.innerText = 'Copy Raw Link'; // modify text description of the menu item
+                rawOptionMenuItem.id = 'raw-link-option';
+                insertAfter(rawOptionMenuItem, menuItem);
+                rawOptionMenuItem.addEventListener('click', () => {
+                    optionChoice = 'raw';
+                    menuItem.click();
+                }, false)
+            }
+
             menuItem.setAttribute('data-vx-linked', '')
-            menuItem.addEventListener('click', handleClick, false)
+            menuItem.addEventListener('click', () => handleClick(optionChoice), false)
         }, 50)
     }
 }

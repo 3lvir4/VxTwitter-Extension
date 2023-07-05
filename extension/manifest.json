@@ -10,18 +10,23 @@
         "default_title": "AutoTwitFix",
         "default_popup": "popup/index.html"
     },
+    "background": {
+        "service_worker": "./background.js"
+    },
     "content_scripts": [
         {
             "matches": [
                 "*://*.twitter.com/*"
             ],
             "js": [
-                "./bundle.js"
+                "./main.js"
             ]
         }
     ],
     "permissions": [
-        "clipboardWrite"
+        "clipboardWrite",
+        "nativeMessaging",
+        "storage"
     ],
     "host_permissions": [
         "*://*.twitter.com/*"
