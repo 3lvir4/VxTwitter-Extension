@@ -1,9 +1,3 @@
-function updateConfig(key, value) {
-   setTimeout(() => {
-      chrome.runtime.sendMessage({ action: 'storage', data: { key, value } })
-   }, 0)
-}
-
 function toggleExtendedOptions() {
    chrome.storage.sync.get(["extendedOptionsState"]).then(result => {
       const currentState = result.extendedOptionsState;
