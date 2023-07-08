@@ -7,14 +7,14 @@ function toggleExtendedOptions() {
 
 window.addEventListener('DOMContentLoaded', () => {
    const extendedOptionsToggleSwitch = document.getElementById('extendedOptions');
-   extendedOptionsToggleSwitch.nextElementSibling.classList.add('no-transition'); // remove toggle switch animation
+   extendedOptionsToggleSwitch.nextElementSibling.classList.add('no-transition');
 
    chrome.storage.sync.get(["extendedOptionsState"])
       .then(result => {
          extendedOptionsToggleSwitch.checked = result.extendedOptionsState;
       })
       .then(() => {
-         setTimeout(() => {extendedOptionsToggleSwitch.nextElementSibling.classList.remove('no-transition')},100); // reassign toggle switch animation
+         setTimeout(() => {extendedOptionsToggleSwitch.nextElementSibling.classList.remove('no-transition')},100); // another goofy timeout
       })
 
    extendedOptionsToggleSwitch.addEventListener('change', toggleExtendedOptions);
