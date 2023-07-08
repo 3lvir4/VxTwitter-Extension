@@ -8,7 +8,6 @@ $bg: #fff
 $bg-checked: #1D9BF0
 $speed: .4s
 
-
 $spacing: math.div( (math.div($size,2)) - ($slider-radius * 2), 2 ) // wtf
 
 .switch
@@ -34,24 +33,24 @@ $spacing: math.div( (math.div($size,2)) - ($slider-radius * 2), 2 ) // wtf
       transition: $speed
       border-radius: 3rem
 
-      &:before
+      &::before
          position: absolute
          content: ""
          block-size: $slider-radius * 2
          inline-size: $slider-radius * 2
          left: $spacing
          bottom: $spacing
-         background-color: $color
          -webkit-transition: $speed
          transition: $speed
+         background-color: $color
          border-radius: 50%
          z-index: 1
-   
+
    input:checked + .slider:before
-         -webkit-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
-         -ms-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
-         transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
-         background-color: $color-checked
-   
+      -webkit-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
+      -ms-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
+      transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
+      background-color: $color-checked
+
    input:checked + .slider
       background: $bg-checked

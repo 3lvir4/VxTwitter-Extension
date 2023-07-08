@@ -15,6 +15,9 @@ body
 .sr-only
    display: none
 
+.no-transition, .no-transition::before, .no-transition::after
+   transition: none !important
+
 .container
    display: flex
    flex-direction: column
@@ -26,7 +29,6 @@ body
    overflow: auto
    padding: 1em 2em
    background-color: $container-bg-color
-   border: 1px solid red
 
    h1
       inline-size: 12rem
