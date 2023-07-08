@@ -12,6 +12,10 @@ import { handleKeyDown } from "./modules/autocopy.js"
 
 let extendedOptionsState;
 
+chrome.storage.sync.get(["extendedOptionsState"]).then(result => {
+    extendedOptionsState = result.extendedOptionsState;
+});
+
 // storage changes handler
 chrome.storage.onChanged.addListener(function (changes) {
     for (let [key, { newValue }] of Object.entries(changes)) {
@@ -20,8 +24,6 @@ chrome.storage.onChanged.addListener(function (changes) {
         }
     }
 });
-
-
 
 // infinite loop
 setInterval(function timer() {

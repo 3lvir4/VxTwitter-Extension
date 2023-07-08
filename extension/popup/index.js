@@ -14,7 +14,5 @@ window.addEventListener('DOMContentLoaded', () => {
       chrome.storage.sync.get(["extendedOptionsState"]).then(result => {
          extendedOptionsToggleSwitch.checked = result.extendedOptionsState;
       });
-   },100);
-
-   
+   },100);  
 })
