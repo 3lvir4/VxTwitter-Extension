@@ -8,3 +8,5 @@ function handleKeyDown(event) {
       writeToClipboard(link)
    }
 }
+
+export { handleKeyDown };
