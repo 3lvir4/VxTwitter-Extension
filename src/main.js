@@ -10,7 +10,7 @@ import { insertBefore, insertAfter } from "./utils/insertElement.js";
 
 import { handleKeyDown } from "./modules/autocopy.js"
 import { isTweetPage } from "./utils/isTweetPage.js"
-import { insertQuotesLink } from "./modules/quotes.js";
+import { addQuotesLinkStyle, insertQuotesLink } from "./modules/quotes.js";
 
 let extendedOptionsState;
 
@@ -70,7 +70,10 @@ function createHandleShareClick(link) {
 setInterval(function timer() {
   setTimeout(() => {
     if (isTweetPage()) {
-      if (!document.querySelector("[data-vx-tweet-quotes]")) insertQuotesLink()
+      if (!document.querySelector("[data-vx-tweet-quotes]")) {
+        insertQuotesLink()
+        addQuotesLinkStyle()
+      }
     }
   }, 100)
 
