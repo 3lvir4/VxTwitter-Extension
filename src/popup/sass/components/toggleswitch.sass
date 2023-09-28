@@ -8,50 +8,49 @@ $bg: #fff
 $bg-checked: #1D9BF0
 $speed: .4s
 
-
 $spacing: math.div( (math.div($size,2)) - ($slider-radius * 2), 2 ) // wtf
 
 .switch
-   position: relative
-   display: inline-block
-   inline-size: $size
-   block-size: math.div($size,2)
+    position: relative
+    display: inline-block
+    inline-size: $size
+    block-size: math.div($size,2)
 
-   input
-      visibility: hidden
-      inline-size: 0
-      block-size: 0
+    input
+        visibility: hidden
+        inline-size: 0
+        block-size: 0
 
-   .slider
-      position: absolute
-      cursor: pointer
-      top: 0
-      left: 0
-      right: 0
-      bottom: 0
-      background-color: $bg
-      -webkit-transition: $speed
-      transition: $speed
-      border-radius: 3rem
+    .slider
+        position: absolute
+        cursor: pointer
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background-color: $bg
+        -webkit-transition: $speed
+        transition: $speed
+        border-radius: 3rem
 
-      &:before
-         position: absolute
-         content: ""
-         block-size: $slider-radius * 2
-         inline-size: $slider-radius * 2
-         left: $spacing
-         bottom: $spacing
-         background-color: $color
-         -webkit-transition: $speed
-         transition: $speed
-         border-radius: 50%
-         z-index: 1
-   
-   input:checked + .slider:before
-         -webkit-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
-         -ms-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
-         transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
-         background-color: $color-checked
-   
-   input:checked + .slider
-      background: $bg-checked
+    &::before
+        position: absolute
+        content: ""
+        block-size: $slider-radius * 2
+        inline-size: $slider-radius * 2
+        left: $spacing
+        bottom: $spacing
+        -webkit-transition: $speed
+        transition: $speed
+        background-color: $color
+        border-radius: 50%
+        z-index: 1
+
+    input:checked + .slider:before
+        -webkit-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
+        -ms-transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
+        transform: translateX($size - $spacing * 2 - ($slider-radius * 2))
+        background-color: $color-checked
+
+    input:checked + .slider
+        background: $bg-checked

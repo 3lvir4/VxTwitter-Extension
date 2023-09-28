@@ -7,14 +7,15 @@ function toggleExtendedOptions() {
 
 window.addEventListener('DOMContentLoaded', () => {
    const extendedOptionsToggleSwitch = document.getElementById('extendedOptions');
-   extendedOptionsToggleSwitch.addEventListener('change', toggleExtendedOptions);
+   extendedOptionsToggleSwitch.nextElementSibling.classList.add('no-transition');
 
-   // goofy timeout to prevent getting value before default set of the state
-   setTimeout(() => {
-      chrome.storage.sync.get(["extendedOptionsState"]).then(result => {
+   chrome.storage.sync.get(["extendedOptionsState"])
+      .then(result => {
          extendedOptionsToggleSwitch.checked = result.extendedOptionsState;
-      });
-   },100);
+      })
+      .then(() => {
+         setTimeout(() => {extendedOptionsToggleSwitch.nextElementSibling.classList.remove('no-transition')},100); // another goofy timeout
+      })
 
-   
+   extendedOptionsToggleSwitch.addEventListener('change', toggleExtendedOptions);
 })
