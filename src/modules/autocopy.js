@@ -1,4 +1,5 @@
 import { getVxTweetLink } from "../utils/linkConverters"
+import { writeToClipboard } from "../utils/clipboard"
 
 function handleKeyDown(event) {
   const isCtrlOrCmd = event.ctrlKey || event.metaKey
