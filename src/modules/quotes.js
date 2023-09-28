@@ -25,13 +25,7 @@ export function insertQuotesLink() {
 
   quotesLink.classList.add("vx-quotes-link")
 
-  //quotesLink.style.display = "flex";
-  //quotesLink.style.gap = "0.5rem";
-  //quotesLink.style.textDecoration = "none";
-
   quotesLinkWrapper.appendChild(quotesLink)
-
-  //insertBefore(quotesLinkWrapper, userActionsWrapperElement)
 
   const k = tweetBodyWrapper.childNodes;
   const len = k.length;
@@ -65,7 +59,7 @@ export function addQuotesLinkStyle() {
   }
 
   .vx-quotes-link:hover .icon svg {
-    filter: invert(46%) sepia(65%) saturate(1338%) hue-rotate(179deg) brightness(100%) contrast(95%);
+    filter: invert(46%) sepia(65%) saturate(1338%) hue-rotate(179deg) brightness(100%) contrast(95%); //hihihi
   }
   `;
   const style = document.createElement('style');
