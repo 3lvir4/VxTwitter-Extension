@@ -8,6 +8,7 @@ I stole the majority of the code from this <a href="https://addons.mozilla.org/f
     <ul>
       <li>Upon clicking "copy the link" on the "share" context menu of a video post, the link is automatically converted to a "vxtwitter" version in your clipboard.</li>
       <li>When you are already on a tweet's page, you can use CTRL + C and it copies the vxtwitter link automatically.</li>
+      <li>When on a tweet page, a "Quotes" link is added in the user actions bar bellow the tweet body for faster tweet quotes access</li>
     </ul>
   <h2>Experimental features</h2>
     <p>Popup extension menu with one experimental feature available: "extend options":</p>
