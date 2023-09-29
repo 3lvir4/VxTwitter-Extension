@@ -2,9 +2,17 @@ import { insertBefore } from "../utils/insertElement";
 
 const selectTweetArticleElement = () => document.querySelector('article[data-testid="tweet"]');
 
-export function insertQuotesLink() {
+export async function insertQuotesLink() {
   const tweet = selectTweetArticleElement();
   const tweetBodyWrapper = tweet.firstChild.firstChild.lastChild;
+
+  const circleLink = await new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(tweetBodyWrapper.querySelector('a[href="https://help.x.com/using-twitter/twitter-circle"]'))
+    }, 150)
+  }) 
+  if (circleLink) return;
+
   /** @type HTMLElement */
   const userActionsWrapperElement = tweetBodyWrapper.lastChild;
   const wrapperStyle = userActionsWrapperElement.className;
