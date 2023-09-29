@@ -6,12 +6,17 @@ export async function insertQuotesLink() {
   const tweet = selectTweetArticleElement();
   const tweetBodyWrapper = tweet.firstChild.firstChild.lastChild;
 
+  /**
+   * Avoids quotes button showing on circle exclusive tweets.
+   * s/o vypez for the travaux investigation
+   */
   const circleLink = await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(tweetBodyWrapper.querySelector('a[href="https://help.x.com/using-twitter/twitter-circle"]'))
     }, 150)
   }) 
   if (circleLink) return;
+
 
   /** @type HTMLElement */
   const userActionsWrapperElement = tweetBodyWrapper.lastChild;
