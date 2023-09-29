@@ -71,8 +71,11 @@ setInterval(function timer() {
   setTimeout(() => {
     if (isTweetPage()) {
       if (!document.querySelector("[data-vx-tweet-quotes]")) {
-        insertQuotesLink()
-        addQuotesLinkStyle()
+        (async () => {
+          await insertQuotesLink()
+          addQuotesLinkStyle()
+        })()
+
       }
     }
   }, 100)
